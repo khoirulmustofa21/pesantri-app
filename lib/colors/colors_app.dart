@@ -7,4 +7,5 @@ class ColorsApp {
   static const buttonColor = Color(0xffEB744E);
   static const warnColor = Color(0xffF9D56E);
   static const whiteColor = Color(0xffFFFFFF);
+  static const greenColor = Color(0xff003F38);
 }

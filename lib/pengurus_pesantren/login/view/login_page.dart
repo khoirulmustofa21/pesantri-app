@@ -146,7 +146,7 @@ class LoginPage extends StatelessWidget {
                   backgroundColor:
                       MaterialStateProperty.all<Color>(ColorsApp.mainColor)),
               onPressed: () {
-                Get.to(const HomePage());
+                Get.to(HomePage());
               },
               child: const Text("Masuk"),
             ),
