@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:pesantri/colors/colors_app.dart';
-import 'package:pesantri/pengurus_pesantren/home/home_page.dart';
+import 'package:pesantri/pengurus_pesantren/home/view/home_page.dart';
 import 'package:pesantri/pengurus_pesantren/login/controller/login_controller.dart';
 
 class LoginPage extends StatelessWidget {

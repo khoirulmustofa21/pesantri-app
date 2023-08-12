@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pesantri/colors/colors_app.dart';
+import 'package:pesantri/pengurus_pesantren/persensi_kegiatan/view/persensi_kegiatan_page.dart';
 
 import 'package:syncfusion_flutter_charts/charts.dart';
 
@@ -18,8 +21,39 @@ class HomePage extends StatelessWidget {
         total += data.y.toInt();
       }
     }
-
     return total;
+  }
+
+  Widget popupExitConfirm() {
+    return Container(
+      height: 80,
+      width: 320,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        color: ColorsApp.whiteColor,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          const Text("Apakah anda yakin akan keluar dari aplikasi"),
+          const Text("PESANTRI?"),
+          Row(
+            children: [
+              ElevatedButton(
+                onPressed: () {},
+                child: const Text("Batal"),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  exit(0);
+                },
+                child: const Text("Keluar"),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
   }
 
   List<Map<String, dynamic>> menuItems = [
@@ -39,6 +73,7 @@ class HomePage extends StatelessWidget {
     {'title': 'Ambil Makan', 'icon': 'assets/icons/ambilMakan.png'},
     {'title': 'Tahfidz', 'icon': 'assets/icons/tahfidz.png'},
     {'title': 'Kesehatan', 'icon': 'assets/icons/kesehatan.png'},
+    {'title': 'Keluar', 'icon': 'assets/icons/logout.png'},
   ];
 
   @override
@@ -117,7 +152,62 @@ class HomePage extends StatelessWidget {
                       children: [
                         InkWell(
                           borderRadius: BorderRadius.circular(20),
-                          onTap: () {},
+                          onTap: () {
+                            if (index == 1) {
+                              Get.to(const PersensiKegiatanPage());
+                            } else if (index == 16) {
+                              Get.defaultDialog(
+                                  titlePadding: const EdgeInsets.all(0),
+                                  title: '',
+                                  // content: popupExitConfirm(),
+                                  content: const Padding(
+                                    padding:
+                                        EdgeInsets.only(left: 30, right: 30),
+                                    child: Column(
+                                      children: [
+                                        Text(
+                                          "Apakah anda yakin akan keluar dari aplikasi",
+                                          style: TextStyle(
+                                              fontFamily: 'Roboto',
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        Text(
+                                          "PESANTRI?",
+                                          style: TextStyle(
+                                              fontFamily: 'Roboto',
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  confirm: ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: ColorsApp.mainColor,
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(5)),
+                                        minimumSize: const Size(68, 20),
+                                      ),
+                                      onPressed: () {
+                                        exit(0);
+                                      },
+                                      child: const Text('Keluar')),
+                                  cancel: ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: ColorsApp.buttonColor,
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(5)),
+                                        minimumSize: const Size(68, 20),
+                                      ),
+                                      onPressed: () {
+                                        Get.back();
+                                      },
+                                      child: const Text('Batal')));
+                            }
+                          },
                           child: Container(
                             height: 58,
                             width: 58,
