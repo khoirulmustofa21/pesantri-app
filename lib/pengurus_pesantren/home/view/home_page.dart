@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pesantri/colors/colors_app.dart';
+import 'package:pesantri/pemberitahuan/view/pemberitahuan.dart';
 import 'package:pesantri/pengurus_pesantren/persensi_kegiatan/view/persensi_kegiatan_page.dart';
 
 import 'package:syncfusion_flutter_charts/charts.dart';
@@ -98,12 +99,41 @@ class HomePage extends StatelessWidget {
           width: 113,
         ),
         centerTitle: true,
-        actions: const [
+        actions: [
           Padding(
-            padding: EdgeInsets.only(right: 20),
-            child: Icon(
-              Icons.notifications_none_outlined,
-              color: ColorsApp.mainColor,
+            padding: const EdgeInsets.only(right: 20, top: 16),
+            child: Stack(
+              children: [
+                InkWell(
+                  onTap: () {
+                    Get.to(Pemberitahuan());
+                  },
+                  child: const Icon(
+                    Icons.notifications_none_outlined,
+                    color: ColorsApp.mainColor,
+                  ),
+                ),
+                Positioned(
+                  bottom: 20,
+                  right: 3,
+                  child: Container(
+                    width: 6,
+                    height: 6,
+                    decoration: BoxDecoration(
+                      color: const Color.fromARGB(255, 246, 89, 78),
+                      borderRadius: BorderRadius.circular(20),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Color.fromARGB(255, 255, 0, 0),
+                          blurStyle: BlurStyle.normal,
+                          blurRadius: 3,
+                          offset: Offset.zero,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
           )
         ],
