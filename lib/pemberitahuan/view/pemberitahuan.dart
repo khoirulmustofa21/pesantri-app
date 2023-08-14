@@ -1,38 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:pesantri/pemberitahuan/controller/pemberitahuan_controller.dart';
 
 import '../../colors/colors_app.dart';
 
 // ignore: must_be_immutable
 class Pemberitahuan extends StatelessWidget {
   Pemberitahuan({super.key});
-  List<Map<String, dynamic>> data = [
-    {
-      'title':
-          'Presensi kegiatan “Haul Akbar Pondok Pesantren Al Iman ke - 100” telah dibuat',
-      'read': true,
-      'time': '1 Jam yang lalu'
-    },
-    {
-      'title':
-          'Presensi kegiatan “Haul Akbar Pondok Pesantren Al Iman ke - 100” telah dibuat',
-      'read': false,
-      'time': 'Kemarin'
-    },
-    {
-      'title':
-          'Presensi kegiatan “Haul Akbar Pondok Pesantren Al Iman ke - 100” telah dibuat',
-      'read': true,
-      'time': '15 September 2020'
-    }
-  ];
+
+  PemberitahuanController c = PemberitahuanController();
+
   List<Map<String, dynamic>> readData() {
-    return data.where((item) => item['read'] == true).toList();
+    return c.data.where((item) => item['read'] == true).toList();
   }
 
   List<Map<String, dynamic>> notReadData() {
-    return data.where((item) => item['read'] == false).toList();
+    return c.data.where((item) => item['read'] == false).toList();
   }
 
   @override
@@ -69,7 +53,7 @@ class Pemberitahuan extends StatelessWidget {
             ),
           ),
         ),
-        body: data.isNotEmpty
+        body: c.data.isNotEmpty
             ? SizedBox(
                 height: MediaQuery.of(context).size.height,
                 width: MediaQuery.of(context).size.width,

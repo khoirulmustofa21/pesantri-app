@@ -1,5 +1,5 @@
 class Pemberitahuan {
-  List<Object> data = [
+  List<Map<String, dynamic>> data = [
     {
       'title':
           'Presensi kegiatan “Haul Akbar Pondok Pesantren Al Iman ke - 100” telah dibuat',
@@ -15,7 +15,7 @@ class Pemberitahuan {
     {
       'title':
           'Presensi kegiatan “Haul Akbar Pondok Pesantren Al Iman ke - 100” telah dibuat',
-      'read': false,
+      'read': true,
       'time': '15 September 2020'
     }
   ];
