@@ -184,7 +184,7 @@ class HomePage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(20),
                           onTap: () {
                             if (index == 1) {
-                              Get.to(const PersensiKegiatanPage());
+                              Get.to(PersensiKegiatanPage());
                             } else if (index == 16) {
                               Get.defaultDialog(
                                   titlePadding: const EdgeInsets.all(0),
@@ -226,7 +226,7 @@ class HomePage extends StatelessWidget {
                                       child: const Text('Keluar')),
                                   cancel: ElevatedButton(
                                       style: ElevatedButton.styleFrom(
-                                        backgroundColor: ColorsApp.buttonColor,
+                                        backgroundColor: ColorsApp.orange,
                                         shape: RoundedRectangleBorder(
                                             borderRadius:
                                                 BorderRadius.circular(5)),

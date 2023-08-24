@@ -3,6 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pesantri/splash_screen_page.dart';
 import 'package:get/get.dart';
 
+import 'colors/colors_app.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -22,7 +24,8 @@ class MyApp extends StatelessWidget {
         return GetMaterialApp(
           title: 'Flutter Demo',
           theme: ThemeData(
-            primarySwatch: Colors.blue,
+            useMaterial3: true,
+            // primaryColor: ColorsApp.mainColor,
           ),
           home: const SplashPage(),
         );

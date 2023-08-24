@@ -148,7 +148,15 @@ class LoginPage extends StatelessWidget {
               onPressed: () {
                 Get.to(HomePage());
               },
-              child: const Text("Masuk"),
+              child: const Text(
+                "Masuk",
+                style: TextStyle(
+                  color: ColorsApp.whiteColor,
+                  fontFamily: 'Roboto',
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
           ],
         ),
