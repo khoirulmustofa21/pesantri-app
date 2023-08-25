@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:pesantri/pengurus_pesantren/persensi_kegiatan/controller/persensi_kegiatan_controller.dart';
+import 'package:pesantri/pengurus_pesantren/persensi_kegiatan/view/persensi_kegiatan_detail.dart';
 
 import '../../../colors/colors_app.dart';
 import 'content_dialog_input_tanggal_jam_widget.dart';
@@ -9,6 +10,7 @@ import 'content_dialog_input_ustadz_santri.dart';
 
 Widget defaultDialogWidget(context) {
   PersensiKegiatanController c = PersensiKegiatanController();
+
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
@@ -117,7 +119,16 @@ Widget defaultDialogWidget(context) {
               ),
               minimumSize: const Size(68, 20),
             ),
-            onPressed: () {},
+            onPressed: () {
+              Get.back();
+              Get.to(PersensiKegiatanDetail(
+                namaKegiatan: c.dataNamaKegiatan,
+                namaUstadz: c.dataNamaUstadz,
+                kategoriSantri: c.dataKategoriSantri,
+                tanggal: c.selectedTanggal,
+                jam: c.selectedJam,
+              ));
+            },
             child: const Text(
               'Tambah',
               style: TextStyle(
