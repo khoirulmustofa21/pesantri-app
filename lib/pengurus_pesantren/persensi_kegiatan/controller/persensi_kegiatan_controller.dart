@@ -97,8 +97,7 @@ class PersensiKegiatanController extends GetxController {
   RxString selctetdUstadz = ''.obs;
   RxString selctetdKategoriSantri = ''.obs;
   RxString selectedJam = ''.obs;
-  RxString selectedKategoriSantri = ''.obs;
-  Rx<DateTime> selectedTanggal = DateTime(0).obs;
+  Rx<DateTime> selectedTanggal = DateTime.now().obs;
 
   changeData(value) {
     selctetdValue.value = value;
@@ -113,5 +112,15 @@ class PersensiKegiatanController extends GetxController {
   setKategoriSantri(value) {
     selctetdKategoriSantri.value = value;
     update();
+  }
+
+  setJam(value) {
+    selectedJam.value = value;
+
+    update();
+  }
+
+  setTanggal(value) {
+    selectedTanggal.value = value;
   }
 }

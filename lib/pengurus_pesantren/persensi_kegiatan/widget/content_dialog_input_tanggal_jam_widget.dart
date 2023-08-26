@@ -9,20 +9,21 @@ import '../../../colors/colors_app.dart';
 Widget contentDialogInputTanggalJamWidge(
     PersensiKegiatanController c, context) {
   TextEditingController dateInputController = TextEditingController();
+
   TextEditingController timeInputController = TextEditingController();
 
-  Future<void> _selectTime(BuildContext context) async {
-    TimeOfDay selectedTime = TimeOfDay.now();
+  // Future<void> _selectTime(BuildContext context) async {
+  //   TimeOfDay selectedTime = TimeOfDay.now();
 
-    selectedTime = await showTimePicker(
-          context: context,
-          initialTime: selectedTime,
-        ) ??
-        selectedTime;
+  //   selectedTime = await showTimePicker(
+  //         context: context,
+  //         initialTime: selectedTime,
+  //       ) ??
+  //       selectedTime;
 
-    String formattedTime = selectedTime.format(context);
-    timeInputController.text = formattedTime;
-  }
+  //   String formattedTime = selectedTime.format(context);
+  //   timeInputController.text = formattedTime;
+  // }
 
   return Row(
     children: [
@@ -84,6 +85,7 @@ Widget contentDialogInputTanggalJamWidge(
                     String formattedDate =
                         DateFormat('yyyy-MM-dd').format(pickedDate);
                     dateInputController.text = formattedDate;
+                    c.setTanggal(pickedDate);
                   }
                 },
               ),
@@ -138,8 +140,18 @@ Widget contentDialogInputTanggalJamWidge(
                       fontWeight: FontWeight.normal,
                     ),
                   ),
-                  onTap: () {
-                    _selectTime(context);
+                  onTap: () async {
+                    TimeOfDay selectedTime = TimeOfDay.now();
+
+                    selectedTime = await showTimePicker(
+                          context: context,
+                          initialTime: selectedTime,
+                        ) ??
+                        selectedTime;
+
+                    String formattedTime = selectedTime.format(context);
+                    timeInputController.text = formattedTime;
+                    c.setJam(formattedTime);
                   },
                 ),
               ),

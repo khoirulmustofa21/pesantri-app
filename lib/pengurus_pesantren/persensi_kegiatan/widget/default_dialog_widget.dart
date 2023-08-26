@@ -10,7 +10,7 @@ import 'content_dialog_input_ustadz_santri.dart';
 
 Widget defaultDialogWidget(context) {
   PersensiKegiatanController c = PersensiKegiatanController();
-
+  RxBool isValid = true.obs;
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
@@ -84,6 +84,15 @@ Widget defaultDialogWidget(context) {
       SizedBox(
         height: 10.h,
       ),
+      Obx(
+        () => isValid.value == true
+            ? const SizedBox()
+            : const Center(
+                child: Text(
+                'Isi Semua Form',
+                style: TextStyle(color: Colors.red),
+              )),
+      ),
       Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -120,14 +129,26 @@ Widget defaultDialogWidget(context) {
               minimumSize: const Size(68, 20),
             ),
             onPressed: () {
-              Get.back();
-              Get.to(PersensiKegiatanDetail(
-                namaKegiatan: c.dataNamaKegiatan,
-                namaUstadz: c.dataNamaUstadz,
-                kategoriSantri: c.dataKategoriSantri,
-                tanggal: c.selectedTanggal,
-                jam: c.selectedJam,
-              ));
+              print(
+                'Nama kegiatan : ${c.selctetdValue} \n Nama ustadz : ${c.selctetdUstadz} \n Kategori santri : ${c.selctetdKategoriSantri} \n Tanggal : ${c.selectedTanggal} \n Jam : ${c.selectedJam}',
+              );
+              if (c.selctetdValue.isNotEmpty &
+                  c.selctetdKategoriSantri.isNotEmpty &
+                  c.selctetdUstadz.isNotEmpty &
+                  c.selectedJam.isNotEmpty) {
+                isValid.value = true;
+
+                Get.back();
+                Get.to(PersensiKegiatanDetail(
+                  namaKegiatan: c.dataNamaKegiatan,
+                  namaUstadz: c.dataNamaUstadz,
+                  kategoriSantri: c.dataKategoriSantri,
+                  tanggal: c.selectedTanggal,
+                  jam: c.selectedJam,
+                ));
+              } else {
+                isValid.value = false;
+              }
             },
             child: const Text(
               'Tambah',
